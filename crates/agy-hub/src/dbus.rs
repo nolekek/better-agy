@@ -127,7 +127,7 @@ impl SystemdManager for MockSystemdManager {
     default_path = "/org/freedesktop/systemd1",
     interface = "org.freedesktop.systemd1.Manager"
 )]
-trait SystemdManagerProxy {
+trait SystemdManagerApi {
     fn start_unit(&self, name: &str, mode: &str) -> zbus::Result<zbus::zvariant::OwnedObjectPath>;
     fn stop_unit(&self, name: &str, mode: &str) -> zbus::Result<zbus::zvariant::OwnedObjectPath>;
     fn restart_unit(&self, name: &str, mode: &str) -> zbus::Result<zbus::zvariant::OwnedObjectPath>;
@@ -135,11 +135,14 @@ trait SystemdManagerProxy {
 }
 
 #[cfg(target_os = "linux")]
+use SystemdManagerApiProxy as SystemdManagerProxy;
+
+#[cfg(target_os = "linux")]
 #[zbus::proxy(
     default_service = "org.freedesktop.systemd1",
     interface = "org.freedesktop.systemd1.Unit"
 )]
-trait SystemdUnitProxy {
+trait SystemdUnit {
     #[zbus(property)]
     fn active_state(&self) -> zbus::Result<String>;
     #[zbus(property)]
