@@ -1,0 +1,40 @@
+[Unit]
+Description=Google Antigravity Web IDE Service
+Documentation=https://github.com/google/antigravity
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/workspace
+
+# Loopback Quota & Auth Failover Proxy
+Environment="HTTPS_PROXY=http://127.0.0.1:51128"
+Environment="HTTP_PROXY=http://127.0.0.1:51128"
+Environment="NO_PROXY=localhost,127.0.0.1,/run/user/*"
+
+# Workspace & Runtime Environment
+Environment="AGY_WORKSPACE=%h/workspace"
+Environment="XDG_RUNTIME_DIR=/run/user/%U"
+Environment="NODE_ENV=production"
+Environment="ANTIGRAVITY_VSCODE_HOST=1"
+
+# Binary Execution & Socket Binding
+ExecStart=/opt/antigravity/bin/antigravity-ide serve-web \
+    --without-connection-token \
+    --socket-path=%t/antigravity.sock \
+    --server-data-dir=%h/.antigravity-server \
+    --user-data-dir=%h/.antigravity-data \
+    --extensions-dir=%h/.antigravity-extensions \
+    --accept-server-license-terms
+
+# Process Resilience
+Restart=always
+RestartSec=3s
+TimeoutStartSec=30s
+TimeoutStopSec=15s
+StandardOutput=journal
+StandardError=journal
+LimitNOFILE=65536
+
+[Install]
+WantedBy=default.target

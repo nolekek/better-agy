@@ -1,0 +1,139 @@
+{
+  "plan": {
+    "title": "TelegramTUI (tg-tui) v1.0.0 Production Deployment & Stability",
+    "summary": "Deployment of a lightweight (<25MB RAM), 100% keyboard-driven terminal Telegram client in Rust to developers and sysadmins as a daily driver replacement for the official client.",
+    "decision": "Ship v1.0.0 publicly on GitHub with prebuilt Windows/Linux binaries, claim production stability, and recommend it as an everyday chat tool.",
+    "horizon": "12 months post-release"
+  },
+  "assumptions": [
+    {
+      "id": "A1",
+      "statement": "Crossterm and Ratatui will handle all terminal resize events, panics, signal interrupts, and Unicode without corrupting the user's terminal or crashing.",
+      "load_bearing": true
+    },
+    {
+      "id": "A2",
+      "statement": "The client will stay strictly under 25MB RAM in continuous long-running daily usage without memory leaks or unbounded growth.",
+      "load_bearing": true
+    },
+    {
+      "id": "A3",
+      "statement": "The Tokio async event loop and Crossterm input polling will maintain snappy, latency-free (<16ms) typing without keystroke drops under load.",
+      "load_bearing": true
+    },
+    {
+      "id": "A4",
+      "statement": "Message history viewport and scrolling logic will naturally present conversations so incoming updates and navigation are immediately visible.",
+      "load_bearing": true
+    },
+    {
+      "id": "A5",
+      "statement": "The client will gracefully handle network dropouts, sleep/wake cycles, and MTProto reconnection without silent message loss.",
+      "load_bearing": true
+    },
+    {
+      "id": "A6",
+      "statement": "Notification bells and alerts will not cause visual tearing or acoustic spam during high-volume channel activity.",
+      "load_bearing": false
+    },
+    {
+      "id": "A7",
+      "statement": "The single-line composer widget is sufficient for real-world messages without clipping, text overflow, or editing frustration.",
+      "load_bearing": true
+    }
+  ],
+  "failure_modes": [
+    {
+      "id": "FM-01",
+      "title": "Terminal State Corruption & Shell Lockout on Panic",
+      "story": "A user resized their terminal or encountered unexpected Unicode text; a panic occurred during drawing before raw mode and alternate screen were cleaned up; the user's shell was left broken with invisible cursor and no line echo, forcing them to kill the terminal session.",
+      "breaks_assumption": "A1",
+      "likelihood": 4,
+      "impact": 5,
+      "indicator": "GitHub issues reporting 'terminal frozen', 'broken cursor', or 'blank screen after crash'",
+      "threshold": ">= 1 occurrence in first 30 days",
+      "response": "Immediately deploy panic hook restoring terminal raw mode and printing human-readable crash log",
+      "mitigation": "Install std::panic::set_hook in main.rs to catch any unhandled panic, execute disable_raw_mode() and LeaveAlternateScreen, and flush stdout before exiting.",
+      "owner": "Core Rust Engine"
+    },
+    {
+      "id": "FM-02",
+      "title": "Message History Autoscroll Blindness",
+      "story": "Users with active chats (>30 messages) found the history viewport fixed to the top (oldest messages) because no auto-scroll to bottom or dynamic viewport follow was implemented; new incoming messages arrived off-screen, leading users to believe the client stopped working.",
+      "breaks_assumption": "A4",
+      "likelihood": 5,
+      "impact": 4,
+      "indicator": "User bug reports stating 'chat does not show new messages' or 'cannot scroll down to bottom'",
+      "threshold": ">= 2 user complaints within 7 days of launch",
+      "response": "Implement dedicated ScrollState tracking in messages panel with default pin-to-bottom and j/k cursor synchronization",
+      "mitigation": "Calculate total wrapped message lines against available viewport height, anchor scroll offset to bottom by default, and clamp selection cursor within visible viewport.",
+      "owner": "TUI UI Layer"
+    },
+    {
+      "id": "FM-03",
+      "title": "Long-Running Session Memory Leak from Unbounded Vectors",
+      "story": "Power users leaving tg-tui in a background tmux session for multiple weeks found RAM usage ballooning past 800MB due to unbounded push() of all incoming channel messages into memory, completely violating the <25MB RAM pledge.",
+      "breaks_assumption": "A2",
+      "likelihood": 4,
+      "impact": 4,
+      "indicator": "Process RSS memory exceeding 50MB after 72 hours of idle background operation",
+      "threshold": "Process RSS > 50MB on benchmark runner",
+      "response": "Evict older messages from memory and stream them to local SQLite database with sliding window of 100 messages per chat",
+      "mitigation": "Cap in-memory message history to 100 messages per active chat, offloading older history to schema.sql SQLite storage and paginating on scroll-up.",
+      "owner": "Storage & Coordinator"
+    },
+    {
+      "id": "FM-04",
+      "title": "Composer Text Clipping & Overflow on Long Messages",
+      "story": "Users typing long messages, URLs, or code snippets found text overflowing the right border without horizontal scrolling or word wrapping; cursor and typed text became invisible, preventing editing or verification before sending.",
+      "breaks_assumption": "A7",
+      "likelihood": 5,
+      "impact": 3,
+      "indicator": "User complaints regarding truncated input or inability to review long text in composer",
+      "threshold": ">= 1 complaint on GitHub issues",
+      "response": "Add horizontal viewport scroll offset and multi-line word-wrap expansion to composer widget",
+      "mitigation": "Add scroll_offset_x calculation to composer Paragraph and integrate unicode-segmentation grapheme cluster navigation.",
+      "owner": "TUI Composer"
+    },
+    {
+      "id": "FM-05",
+      "title": "Input Stutter & Dropped Keystrokes Under Network Load",
+      "story": "During bulk message sync or channel updates, the main event loop prioritized TDLib channel processing over keyboard polling, causing perceptible lag when typing quickly.",
+      "breaks_assumption": "A3",
+      "likelihood": 3,
+      "impact": 4,
+      "indicator": "Measured input latency > 50ms during heavy network traffic benchmark",
+      "threshold": "Input-to-render latency > 32ms",
+      "response": "Decouple crossterm input reading into dedicated blocking Tokio task sending events through unbounded mpsc channel",
+      "mitigation": "Move event::read() into a dedicated background input thread and use tokio::select! biased mode to always prioritize user keystrokes over background sync.",
+      "owner": "Async Architecture"
+    },
+    {
+      "id": "FM-06",
+      "title": "Terminal Redraw Tearing from Raw Bell Character",
+      "story": "In high-traffic groups, direct raw print!('\\x07') to stdout bypassed Ratatui's double-buffering, causing terminal cell tearing, displaced borders, and relentless audio screeching.",
+      "breaks_assumption": "A6",
+      "likelihood": 4,
+      "impact": 3,
+      "indicator": "User reports of visual glitches in terminal frame or loud bell spam in busy groups",
+      "threshold": ">= 1 report in issue tracker",
+      "response": "Throttle notification beeps to max 1 per 5 seconds and route through configuration toggle",
+      "mitigation": "Add notification_bell boolean in AppConfig, throttle bell trigger to once per 5 seconds, and avoid raw unbuffered stdout prints during render frames.",
+      "owner": "Core Coordinator"
+    },
+    {
+      "id": "FM-07",
+      "title": "Silent Message Drop on Network Disconnect",
+      "story": "Users pressed Enter on messages while laptop WiFi temporarily dropped; messages remained stuck in pending state without clear offline indicator or retry queue, leaving users unaware their messages were never transmitted.",
+      "breaks_assumption": "A5",
+      "likelihood": 3,
+      "impact": 4,
+      "indicator": "Messages stuck in DeliveryStatus::Pending for > 30 seconds without retry",
+      "threshold": "Pending duration > 15s when network is degraded",
+      "response": "Show prominent [Offline - Reconnecting...] banner in header and implement persistent SQLite outbox queue",
+      "mitigation": "Add ConnectionState enum to coordinator, render network status banner in UI, and queue unacknowledged messages in an Outbox with exponential backoff retry.",
+      "owner": "Network & Backend"
+    }
+  ],
+  "residual_risk": "External TDLib shared library binary dependency across diverse Linux distributions (glibc vs musl differences on custom kernels) and edge-case terminal emulator escape code differences on legacy Windows conhost."
+}

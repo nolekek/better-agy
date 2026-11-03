@@ -1,0 +1,20 @@
+[Unit]
+Description=Antigravity Central Authentication and Reverse Proxy Hub
+Documentation=https://github.com/google/antigravity
+After=network.target antigravity-proxy.service
+Wants=antigravity-proxy.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/local/bin/agy-hub --bind 127.0.0.1:8080 --config /etc/antigravity/hub.json
+Restart=always
+RestartSec=3s
+LimitNOFILE=65536
+StandardOutput=journal
+StandardError=journal
+AmbientCapabilities=CAP_SETUID CAP_SETGID CAP_AUDIT_WRITE
+
+[Install]
+WantedBy=multi-user.target

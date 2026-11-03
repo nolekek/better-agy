@@ -1,0 +1,453 @@
+# ==============================================================================
+# ANTIGRAVITY PRESETS MANIFEST (Single Source of Truth v3.0)
+# Validated against schemas/presets.schema.json
+# ==============================================================================
+
+version: "3.0"
+
+always_active:
+  - agent-preset-conductor
+  - grill-me
+  - systematic-debugging
+  - verification-before-completion
+  - concise-planning
+
+presets:
+  web:
+    name: "Web Modern"
+    icon: "🌐"
+    description: "Next.js 15, React, Tailwind v4, Vue 3, TanStack Query, Web Vitals, SEO & CRO"
+    skills:
+      - ui-ux-pro-max
+      - frontend-design
+      - react-best-practices
+      - nextjs-fullstack-guru
+      - tailwind-v4-master
+      - react-performance-opt
+      - vue-nuxt-expert
+      - web-state-query-master
+      - web-performance-auditor
+      - seo-audit
+      - form-cro
+      - figcraft-design
+      - vectorcraft-artwork
+      - ai-product-partner
+    adjacent_presets:
+      - qa
+      - backend
+      - product
+      - media
+
+  backend:
+    name: "Backend & DB"
+    icon: "⚙️"
+    description: "PostgreSQL DBA, Database design, API design, Node.js, FastAPI, Go, Rust, Redis, Kafka"
+    skills:
+      - postgres-dba-optimizer
+      - database-design
+      - api-design-principles
+      - fastapi-async-architect
+      - nodejs-best-practices
+      - go-concurrency-patterns
+      - go-highload-services
+      - rust-systems-safe
+      - redis-distributed-caching
+      - kafka-event-streaming
+      - memory-safety-patterns
+      - ai-product-partner
+    adjacent_presets:
+      - devops
+      - qa
+      - web
+      - systems
+
+  devops:
+    name: "DevOps & Cloud"
+    icon: "🐳"
+    description: "Docker multi-stage, Kubernetes, GitHub Actions, Terraform IaC, AWS Serverless, SRE, Observability"
+    skills:
+      - docker-container-master
+      - k8s-manifest-generator
+      - github-actions-ci-cd
+      - terraform-iac-architect
+      - aws-serverless
+      - incident-responder
+      - deployment-procedures
+      - observability-telemetry-guru
+      - ai-product-partner
+    adjacent_presets:
+      - backend
+      - qa
+      - appsec
+
+  appsec:
+    name: "AppSec & Reversing"
+    icon: "🛡️"
+    description: "OWASP Top-10, API security, Ethical hacking, Electron ASAR, Win32/PS & Desktop UI, Network intercept"
+    skills:
+      - top-web-vulnerabilities
+      - api-security-best-practices
+      - ethical-hacking-methodology
+      - appsec-code-auditor
+      - api-pentest-fuzzer
+      - network-traffic-intercept
+      - craft-anything
+      - reverse-engineer-electron
+      - win32-powershell-automation
+      - windows-desktop-control
+      - premortem-redteam
+    adjacent_presets:
+      - backend
+      - qa
+      - reverse-engineering
+      - devops
+
+  qa:
+    name: "QA & Testing"
+    icon: "🧪"
+    description: "Playwright E2E & Desktop UI (Windows-MCP), TDD, Test fixing, Code review audit, k6 load testing, API contracts"
+    skills:
+      - playwright-e2e-guru
+      - windows-desktop-control
+      - test-driven-development
+      - test-fixing
+      - code-review-checklist
+      - unit-test-synthesizer
+      - k6-load-testing-pro
+      - api-contract-tester
+      - ai-product-partner
+    adjacent_presets:
+      - web
+      - backend
+      - devops
+      - appsec
+
+  ai-agents:
+    name: "AI & MCP Engineering"
+    icon: "🤖"
+    description: "MCP серверы, RAG, Prompt Engineering, архитектура агентов и управление контекстом"
+    skills:
+      - mcp-builder
+      - prompt-engineering
+      - rag-implementation
+      - context-window-management
+      - ai-agents-architect
+      - agent-evaluation
+      - langgraph
+      - browser
+      - fl-freelance-agent
+      - ai-product-partner
+    adjacent_presets:
+      - backend
+      - orchestrator
+      - product
+      - web-research
+
+  web-research:
+    name: "Web Research & OSINT"
+    icon: "🔍"
+    description: "Глубокий поиск, извлечение контента, веб-скрапинг, OSINT и аналитика"
+    skills:
+      - search-specialist
+      - deep-research-synthesizer
+      - web-scraper-harvester
+      - osint-recon-investigator
+      - ai-product-partner
+    adjacent_presets:
+      - product
+      - ai-agents
+      - reverse-engineering
+
+  reverse-engineering:
+    name: "Reverse Engineering & Replica"
+    icon: "🧬"
+    description: "Полный Clean-Room цикл (11 скиллов Replica) + Electron ASAR реверс-инжиниринг"
+    skills:
+      - craft-anything
+      - replica-recon
+      - replica-architect
+      - replica-backend
+      - replica-brand
+      - replica-build
+      - replica-deploy
+      - replica-design
+      - replica-diff
+      - replica-entrepreneur
+      - replica-launch
+      - replica-test
+      - reverse-engineer-electron
+      - ai-product-partner
+    adjacent_presets:
+      - appsec
+      - product
+      - systems
+
+  product:
+    name: "Product & Monetization"
+    icon: "💎"
+    description: "Стратегия монетизации, юнит-экономика, офферы, карточки товаров, анализ рынка, ценообразование и CRO"
+    skills:
+      - product-monetization-strategy
+      - market-competitor-intelligence
+      - ai-product-partner
+      - browser
+      - search-specialist
+      - deep-research-synthesizer
+      - replica-entrepreneur
+      - replica-brand
+      - replica-launch
+      - form-cro
+      - ui-ux-pro-max
+      - seo-audit
+      - scientific-psychometrics
+    adjacent_presets:
+      - web
+      - web-research
+      - ai-agents
+      - orchestrator
+
+  orchestrator:
+    name: "Orchestrator & Multi-Agent"
+    icon: "🎭"
+    description: "Мультиагентная оркестрация, декомпозиция крупных проектов, параллельные субагенты с фиксированными пресетами, арбитраж и верификация"
+    skills:
+      - subagent-orchestrator
+      - hierarchical-task-decomposer
+      - multi-agent-debate-consensus
+      - context-synthesis-reducer
+      - ai-agents-architect
+      - prompt-engineering
+      - context-window-management
+      - agent-evaluation
+      - langgraph
+      - artcraft-orchestrator
+      - craft-anything
+      - figcraft-design
+      - code-review-checklist
+      - premortem-redteam
+      - ai-product-partner
+    adjacent_presets:
+      - ai-agents
+      - product
+      - meta-dev
+
+  systems:
+    name: "Systems & High-Perf"
+    icon: "⚡"
+    description: "Modern C++20/C++23, C, Zig, Rust, RAII, ручное управление памятью, lock-free, SIMD, санитайзеры ASan/TSan, CMake и профилирование"
+    skills:
+      - cpp-systems-architect
+      - systems-lowlevel-perf
+      - lockfree-concurrency-patterns
+      - rust-systems-safe
+      - memory-safety-patterns
+      - test-driven-development
+      - test-fixing
+      - code-review-checklist
+    adjacent_presets:
+      - vst3
+      - backend
+      - hardware
+
+  vst3:
+    name: "VST3 & Audio DSP Studio"
+    icon: "🎛️"
+    description: "Разработка VST3/VST3i плагинов, синтезаторов и DSP эффектов: JUCE C++, real-time audio thread safety, SIMD, аудио UI/UX дизайн и мультиагентная оркестрация"
+    skills:
+      - vst3-dsp-architect
+      - audio-plugin-ui-ux
+      - figcraft-design
+      - vectorcraft-artwork
+      - cpp-systems-architect
+      - systems-lowlevel-perf
+      - lockfree-concurrency-patterns
+      - subagent-orchestrator
+      - hierarchical-task-decomposer
+      - test-driven-development
+      - test-fixing
+      - code-review-checklist
+    adjacent_presets:
+      - systems
+      - media
+      - orchestrator
+
+  hardware:
+    name: "Hardware & CAD/CAM Studio"
+    icon: "📐"
+    description: "Параметрическое 3D твердотельное моделирование (SolidCraft), 2D/3D черчение DWG/DXF (CADCraft), 3D PBR текстурирование (TextureCraft), экспорт STEP/STL"
+    skills:
+      - solidcraft-modeling
+      - cadcraft-drafting
+      - texturecraft-pbr
+      - cpp-systems-architect
+      - systems-lowlevel-perf
+      - ai-product-partner
+    adjacent_presets:
+      - systems
+      - media
+
+  media:
+    name: "Creative Studio & Media Production"
+    icon: "🎨"
+    description: "Нелинейный видеомонтаж (FilmCraft), моушн-дизайн и визуальные эффекты (EffectCraft), проявка RAW и HDR (LightCraft), растр PSD (PhotoCraft), вектор SVG (VectorCraft), дизайн-системы (FigCraft)"
+    skills:
+      - filmcraft-video
+      - effectcraft-vfx
+      - lightcraft-photo
+      - photocraft-studio
+      - vectorcraft-artwork
+      - figcraft-design
+      - ui-ux-pro-max
+      - frontend-design
+      - ai-product-partner
+    adjacent_presets:
+      - web
+      - vst3
+      - hardware
+
+  meta-dev:
+    name: "Antigravity Core & Self-Dev"
+    icon: "🛠️"
+    description: "Разработка ядра Antigravity: Electron ASAR сборка/распаковка, синхронизация скиллов, тесты Multi-Account, инсталлятор и Win32 автоматизация"
+    skills:
+      - antigravity-core-dev
+      - reverse-engineer-electron
+      - win32-powershell-automation
+      - windows-desktop-control
+      - test-driven-development
+      - test-fixing
+      - code-review-checklist
+      - nodejs-best-practices
+      - subagent-orchestrator
+      - hierarchical-task-decomposer
+      - github-actions-ci-cd
+    adjacent_presets:
+      - devops
+      - qa
+      - appsec
+      - orchestrator
+
+  minimal:
+    name: "Minimal Context"
+    icon: "⚡"
+    description: "Минимум токенов в системном промпте"
+    skills:
+      - ai-product-partner
+    adjacent_presets: []
+
+hybrid_rules:
+  - trigger: ["react", "playwright"]
+    compose: [web, qa]
+    description: "Web frontend testing with Playwright E2E"
+
+  - trigger: ["nextjs", "playwright"]
+    compose: [web, qa]
+    description: "Next.js fullstack with Playwright testing"
+
+  - trigger: ["frontend", "playwright"]
+    compose: [web, qa]
+    description: "Frontend development with Playwright E2E tests"
+
+  - trigger: ["frontend", "e2e"]
+    compose: [web, qa]
+    description: "Frontend development with E2E test suites"
+
+  - trigger: ["api", "docker"]
+    compose: [backend, devops]
+    description: "Backend API containerization with Docker"
+
+  - trigger: ["backend", "docker"]
+    compose: [backend, devops]
+    description: "Backend services with Docker and container infrastructure"
+
+  - trigger: ["fastapi", "docker"]
+    compose: [backend, devops]
+    description: "FastAPI services with Docker deployment"
+
+  - trigger: ["postgres", "k8s"]
+    compose: [backend, devops]
+    description: "Database orchestration with Kubernetes"
+
+  - trigger: ["postgres", "docker"]
+    compose: [backend, devops]
+    description: "Database orchestration with Docker"
+
+  - trigger: ["fastapi", "react"]
+    compose: [backend, web]
+    description: "Fullstack Python FastAPI backend + React frontend"
+
+  - trigger: ["api", "react"]
+    compose: [backend, web]
+    description: "Fullstack API backend + React web interface"
+
+  - trigger: ["backend", "frontend"]
+    compose: [backend, web]
+    description: "Fullstack web application development"
+
+  - trigger: ["fullstack", "nextjs"]
+    compose: [backend, web]
+    description: "Fullstack Next.js application development"
+
+  - trigger: ["api", "playwright"]
+    compose: [backend, qa]
+    description: "Backend API testing with Playwright / contract tests"
+
+  - trigger: ["backend", "test"]
+    compose: [backend, qa]
+    description: "Backend services with comprehensive automated testing"
+
+  - trigger: ["cpp", "dsp"]
+    compose: [systems, vst3]
+    description: "C++ systems DSP audio plugin architecture"
+
+  - trigger: ["juce", "dsp"]
+    compose: [systems, vst3]
+    description: "JUCE C++ DSP audio plugin development"
+
+  - trigger: ["juce", "systems"]
+    compose: [systems, vst3]
+    description: "JUCE framework with low-level systems engineering"
+
+  - trigger: ["security", "api"]
+    compose: [appsec, backend]
+    description: "Backend API security auditing and pentesting"
+
+  - trigger: ["owasp", "web"]
+    compose: [appsec, web]
+    description: "Web application security and vulnerability audit"
+
+  - trigger: ["reverse", "electron"]
+    compose: [reverse-engineering, appsec]
+    description: "Electron ASAR unpacking and binary security reverse engineering"
+
+  - trigger: ["docker", "ci"]
+    compose: [devops, qa]
+    description: "CI/CD pipeline automation and automated test suites"
+
+  - trigger: ["github-actions", "playwright"]
+    compose: [devops, qa]
+    description: "CI/CD GitHub Actions with Playwright test automation"
+
+  - trigger: ["cad", "cpp"]
+    compose: [hardware, systems]
+    description: "Parametric CAD modeling with low-level C++ systems"
+
+  - trigger: ["video", "ui"]
+    compose: [media, web]
+    description: "Media production assets integrated into modern web UI"
+
+  - trigger: ["mcp", "backend"]
+    compose: [ai-agents, backend]
+    description: "AI agent MCP server with backend service architecture"
+
+  - trigger: ["langgraph", "api"]
+    compose: [ai-agents, backend]
+    description: "LangGraph agent workflow with backend service integration"
+
+  - trigger: ["product", "market"]
+    compose: [product, web-research]
+    description: "Product market research, competitor intelligence, and analytics"
+
+  - trigger: ["osint", "research"]
+    compose: [web-research, appsec]
+    description: "Deep web OSINT reconnaissance and security research"

@@ -1,0 +1,43 @@
+[workspace]
+
+[package]
+name = "agy-e2e"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+agy-core = { path = "../crates/agy-core" }
+agy-proxy = { path = "../crates/agy-proxy" }
+agy-mock = { path = "../crates/agy-mock" }
+agy-hub = { path = "../crates/agy-hub" }
+agy-cli = { path = "../crates/agy-cli" }
+tower = { version = "0.4", features = ["util"] }
+http-body-util = "0.1"
+axum = "0.7"
+hyper = { version = "1.4", features = ["full"] }
+hyper-util = { version = "0.1", features = ["full"] }
+tokio = { version = "1.38", features = ["full"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json", "stream"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9"
+tempfile = "3.10"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+bytes = "1.6"
+futures = "0.3"
+futures-util = "0.3"
+chrono = { version = "0.4", features = ["serde"] }
+
+[[test]]
+name = "e2e_runner"
+path = "e2e_runner.rs"
+
+[[test]]
+name = "tier1_features"
+path = "tier1_features/mod.rs"
+
+[[test]]
+name = "tier2_boundaries"
+path = "tier2_boundaries/mod.rs"

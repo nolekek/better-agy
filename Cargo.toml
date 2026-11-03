@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/agy-core",
+    "crates/*",
+]
+default-members = ["crates/agy-core"]
+
+# Master Project Workspace Members:
+# - crates/agy-core
+# - crates/agy-proxy
+# - crates/agy-hub
+# - crates/agy-cli
+# - crates/agy-mock

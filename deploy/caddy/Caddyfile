@@ -1,0 +1,67 @@
+{
+    # Global options
+    admin off
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 100mb
+            roll_keep 10
+            roll_keep_for 720h
+        }
+        format json
+    }
+}
+
+# Domain configured via environment variable AGY_DOMAIN or fallback to code.local
+{$AGY_DOMAIN:code.local} {
+    # TLS Certificate Management:
+    # On public domains, Let's Encrypt / ZeroSSL are automatically selected.
+    # Fallback to internal self-signed CA when deploying to LAN / staging IPs.
+    @is_internal `"{host}".endsWith(".local") || "{host}".endsWith(".internal") || "{host}".matches("^[0-9.]+$")`
+    tls {
+        # Automatic TLS configuration
+    }
+
+    # High-performance compression for VS Code Web static assets (JS, WASM, CSS)
+    encode zstd gzip
+
+    # Request limits for IDE file uploads and workspace drag-and-drop
+    request_body {
+        max_size 500MB
+    }
+
+    # Security Headers
+    header {
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Cross-Origin-Opener-Policy "same-origin-allow-popups"
+        Content-Security-Policy "frame-ancestors 'self';"
+        -Server
+    }
+
+    # Health check endpoint for monitoring & load balancers
+    handle /healthz {
+        respond "OK" 200
+    }
+
+    # Reverse proxy to agy-hub portal (Port 8080)
+    handle {
+        reverse_proxy 127.0.0.1:8080 {
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up X-Forwarded-Proto {scheme}
+            header_up X-Forwarded-Host {host}
+
+            # Response streaming: CRITICAL for AI token streaming (Server-Sent Events / chunked responses)
+            # -1 immediately flushes every chunk to the browser without proxy buffer delays
+            flush_interval -1
+
+            transport http {
+                response_header_timeout 300s
+                read_buffer 4096
+                write_buffer 4096
+                dial_timeout 5s
+            }
+        }
+    }
+}

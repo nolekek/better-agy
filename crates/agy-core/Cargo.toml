@@ -1,0 +1,20 @@
+[package]
+name = "agy-core"
+version = "0.1.0"
+edition = "2021"
+authors = ["Antigravity Multi-User Team"]
+description = "Core library, Presets Parser, and Symlink Projection Engine for Antigravity Linux Server"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9"
+thiserror = "1.0"
+tracing = "0.1"
+walkdir = "2.4"
+
+[target.'cfg(windows)'.dependencies]
+junction = "2.1"
+
+[dev-dependencies]
+tempfile = "3.10"

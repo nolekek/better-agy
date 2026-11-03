@@ -1,0 +1,553 @@
+{
+  "name": "HEXACO-60",
+  "full_name": "HEXACO-PI-R 60-Item Inventory (Ashton & Lee, 2009)",
+  "language": "ru",
+  "total_items": 60,
+  "min_items": 25,
+  "scale_type": "likert_5",
+  "response_options": [
+    { "value": 1, "label": "1 — Полностью не согласен" },
+    { "value": 2, "label": "2 — Скорее не согласен" },
+    { "value": 3, "label": "3 — Нейтрально / Затрудняюсь ответить" },
+    { "value": 4, "label": "4 — Скорее согласен" },
+    { "value": 5, "label": "5 — Полностью согласен" }
+  ],
+  "factors": {
+    "H": {
+      "code": "H",
+      "name_ru": "Честность-Скромность",
+      "name_en": "Honesty-Humility",
+      "description": "Склонность к искренности, справедливости, нестяжательству и скромности в противоположность манипуляциям, алчности и самовозвеличиванию.",
+      "facets": ["Искренность", "Справедливость", "Избегание жадности", "Скромность"],
+      "norm_mean": 3.25,
+      "norm_sd": 0.65
+    },
+    "E": {
+      "code": "E",
+      "name_ru": "Эмоциональность",
+      "name_en": "Emotionality",
+      "description": "Склонность испытывать страх, тревогу, эмпатию и потребность в эмоциональной поддержке в противоположность хладнокровию и независимости.",
+      "facets": ["Страх", "Тревожность", "Зависимость от поддержки", "Чувствительность"],
+      "norm_mean": 3.30,
+      "norm_sd": 0.68
+    },
+    "X": {
+      "code": "X",
+      "name_ru": "Экстраверсия",
+      "name_en": "Extraversion",
+      "description": "Уверенность в социальных контактах, энергичность, энтузиазм и стремление к лидерству в противоположность сдержанности и уединению.",
+      "facets": ["Социальная самооценка", "Смелость в общении", "Общительность", "Жизнерадостность"],
+      "norm_mean": 3.45,
+      "norm_sd": 0.62
+    },
+    "A": {
+      "code": "A",
+      "name_ru": "Доброжелательность",
+      "name_en": "Agreeableness",
+      "description": "Склонность к прощению, терпению, сотрудничеству и миролюбию в противоположность мстительности, раздражительности и упрямству.",
+      "facets": ["Прощение", "Мягкость", "Гибкость", "Терпение"],
+      "norm_mean": 3.10,
+      "norm_sd": 0.60
+    },
+    "C": {
+      "code": "C",
+      "name_ru": "Добросовестность",
+      "name_en": "Conscientiousness",
+      "description": "Организованность, самодисциплина, настойчивость, внимание к деталям и осмотрительность в противоположность импульсивности и хаосу.",
+      "facets": ["Организованность", "Прилежание", "Перфекционизм", "Осмотрительность"],
+      "norm_mean": 3.55,
+      "norm_sd": 0.58
+    },
+    "O": {
+      "code": "O",
+      "name_ru": "Открытость опыту",
+      "name_en": "Openness to Experience",
+      "description": "Эстетическая восприимчивость, интеллектуальное любопытство, тяга к творчеству и нетрадиционным идеям.",
+      "facets": ["Эстетическая восприимчивость", "Любознательность", "Креативность", "Нетрадиционность"],
+      "norm_mean": 3.40,
+      "norm_sd": 0.64
+    }
+  },
+  "items": [
+    {
+      "id": 1,
+      "factor": "O",
+      "facet": "Эстетическая восприимчивость",
+      "reverse": false,
+      "text_ru": "Мне бы очень понравилось изучать историю искусства, живопись или классическую архитектуру.",
+      "text_en": "I would be quite bored by a visit to an art gallery."
+    },
+    {
+      "id": 2,
+      "factor": "C",
+      "facet": "Организованность",
+      "reverse": false,
+      "text_ru": "Я планирую и организую свои дела заранее, чтобы избежать спешки и неожиданностей.",
+      "text_en": "I plan ahead and organize things, to avoid jumbling through at the last minute."
+    },
+    {
+      "id": 3,
+      "factor": "A",
+      "facet": "Прощение",
+      "reverse": false,
+      "text_ru": "Я редко держу обиду на людей, даже если со мной поступили крайне несправедливо.",
+      "text_en": "I rarely hold a grudge, even against people who have badly wronged me."
+    },
+    {
+      "id": 4,
+      "factor": "X",
+      "facet": "Общительность",
+      "reverse": false,
+      "text_ru": "На вечеринках и общественных встречах я обычно общаюсь со множеством самых разных людей.",
+      "text_en": "I feel reasonably satisfied with myself overall."
+    },
+    {
+      "id": 5,
+      "factor": "E",
+      "facet": "Тревожность",
+      "reverse": true,
+      "text_ru": "Я почти никогда не беспокоюсь о вещах, которые могут пойти не так в будущем.",
+      "text_en": "I would feel afraid if I had to travel in bad weather conditions."
+    },
+    {
+      "id": 6,
+      "factor": "H",
+      "facet": "Искренность",
+      "reverse": false,
+      "text_ru": "Я бы не стал льстить человеку, даже если бы это помогло мне быстрее продвинуться по службе.",
+      "text_en": "I wouldn't use flattery to get a raise or promotion at work, even if I thought it would succeed."
+    },
+    {
+      "id": 7,
+      "factor": "O",
+      "facet": "Любознательность",
+      "reverse": true,
+      "text_ru": "Меня мало интересуют научные открытия, устройство Вселенной и сложные абстрактные теории.",
+      "text_en": "I'm interested in learning about the history and politics of other countries."
+    },
+    {
+      "id": 8,
+      "factor": "C",
+      "facet": "Прилежание",
+      "reverse": true,
+      "text_ru": "Я часто оставляю начатые дела незавершенными, если они требуют долгого и рутинного труда.",
+      "text_en": "I often push myself very hard when trying to achieve a goal."
+    },
+    {
+      "id": 9,
+      "factor": "A",
+      "facet": "Мягкость",
+      "reverse": true,
+      "text_ru": "Люди часто считают меня слишком резким и чрезмерно критичным к их слабостям или ошибкам.",
+      "text_en": "People sometimes tell me that I am too critical of others."
+    },
+    {
+      "id": 10,
+      "factor": "X",
+      "facet": "Смелость в общении",
+      "reverse": true,
+      "text_ru": "Я чувствую себя скованно и застенчиво, когда мне приходится выступать или говорить перед аудиторией.",
+      "text_en": "I rarely express my opinions in group meetings."
+    },
+    {
+      "id": 11,
+      "factor": "E",
+      "facet": "Страх",
+      "reverse": false,
+      "text_ru": "Мысль о том, что мне придется перенести хирургическую операцию или получить физическую травму, пугает меня.",
+      "text_en": "I sometimes can't help worrying about little things."
+    },
+    {
+      "id": 12,
+      "factor": "H",
+      "facet": "Справедливость",
+      "reverse": true,
+      "text_ru": "Если бы я был абсолютно уверен, что меня не поймают, я бы мог воспользоваться чужими деньгами ради выгоды.",
+      "text_en": "If I knew that I could never get caught, I would be willing to steal a million dollars."
+    },
+    {
+      "id": 13,
+      "factor": "O",
+      "facet": "Креативность",
+      "reverse": false,
+      "text_ru": "У меня богатое воображение, и мне легко придумывать нестандартные идеи и яркие образы.",
+      "text_en": "I would enjoy creating a work of art, such as a novel, a song, or a painting."
+    },
+    {
+      "id": 14,
+      "factor": "C",
+      "facet": "Перфекционизм",
+      "reverse": false,
+      "text_ru": "Я уделяю внимание мельчайшим деталям и стремлюсь доводить работу до высокого качества.",
+      "text_en": "When working on something, I don't pay much attention to small details."
+    },
+    {
+      "id": 15,
+      "factor": "A",
+      "facet": "Гибкость",
+      "reverse": true,
+      "text_ru": "Мне трудно уступить в споре, даже когда очевидно, что собеседник отчасти тоже прав.",
+      "text_en": "People sometimes tell me that I'm too stubborn."
+    },
+    {
+      "id": 16,
+      "factor": "X",
+      "facet": "Социальная самооценка",
+      "reverse": false,
+      "text_ru": "В целом я вполне уверен в себе, своих способностях и доволен тем, кто я есть.",
+      "text_en": "I feel that I am an unpopular person."
+    },
+    {
+      "id": 17,
+      "factor": "E",
+      "facet": "Зависимость от поддержки",
+      "reverse": true,
+      "text_ru": "Я редко делюсь своими переживаниями и предпочитаю справляться со стрессом в одиночку, без сочувствия окружающих.",
+      "text_en": "When I suffer from a painful experience, I need someone to make me feel comfortable."
+    },
+    {
+      "id": 18,
+      "factor": "H",
+      "facet": "Избегание жадности",
+      "reverse": false,
+      "text_ru": "Обладание дорогими статусными вещами (люксовые авто, брендовая одежда) не доставляет мне особого удовольствия.",
+      "text_en": "Having a lot of money is not especially important to me."
+    },
+    {
+      "id": 19,
+      "factor": "O",
+      "facet": "Нетрадиционность",
+      "reverse": true,
+      "text_ru": "Я считаю странными, чуждыми и не вызывающими доверия людей с эксцентричными привычками или взглядами.",
+      "text_en": "I think that paying attention to radical ideas is a waste of time."
+    },
+    {
+      "id": 20,
+      "factor": "C",
+      "facet": "Осмотрительность",
+      "reverse": true,
+      "text_ru": "Я часто действую спонтанно и импульсивно под влиянием момента, не задумываясь о последствиях.",
+      "text_en": "I make decisions based on the spur of the moment, rather than on careful thought."
+    },
+    {
+      "id": 21,
+      "factor": "A",
+      "facet": "Терпение",
+      "reverse": true,
+      "text_ru": "Меня очень легко вывести из равновесия и разозлить даже незначительным раздражителем.",
+      "text_en": "I am usually quite flexible in my opinions when people disagree with me."
+    },
+    {
+      "id": 22,
+      "factor": "X",
+      "facet": "Жизнерадостность",
+      "reverse": false,
+      "text_ru": "Большую часть времени я полон энергии, оптимизма и живого энтузиазма.",
+      "text_en": "On most days, I feel cheerful and optimistic."
+    },
+    {
+      "id": 23,
+      "factor": "E",
+      "facet": "Чувствительность",
+      "reverse": false,
+      "text_ru": "Я чувствую глубокую жалость и сострадание, когда вижу страдающего человека или беззащитное существо.",
+      "text_en": "I feel like crying when I see other people crying."
+    },
+    {
+      "id": 24,
+      "factor": "H",
+      "facet": "Скромность",
+      "reverse": true,
+      "text_ru": "Я считаю, что заслуживаю большего уважения и привилегий, чем большинство обычных людей.",
+      "text_en": "I think that I am entitled to more respect than the average person is."
+    },
+    {
+      "id": 25,
+      "factor": "O",
+      "facet": "Эстетическая восприимчивость",
+      "reverse": true,
+      "text_ru": "Меня редко трогают до глубины души произведения живописи, классической музыки или поэзии.",
+      "text_en": "If I had the chance, I would like to attend a classical music concert."
+    },
+    {
+      "id": 26,
+      "factor": "C",
+      "facet": "Организованность",
+      "reverse": true,
+      "text_ru": "В моем рабочем пространстве и личных вещах часто царит беспорядок и неразбериха.",
+      "text_en": "When I work, I sometimes have a number of things going on at the same time, without a clear plan."
+    },
+    {
+      "id": 27,
+      "factor": "A",
+      "facet": "Прощение",
+      "reverse": true,
+      "text_ru": "Если кто-то однажды меня обманул или подвел, мне почти невозможно простить и снова доверять этому человеку.",
+      "text_en": "My attitude toward people who have treated me badly is 'forgive and forget'."
+    },
+    {
+      "id": 28,
+      "factor": "X",
+      "facet": "Общительность",
+      "reverse": true,
+      "text_ru": "Я предпочитаю держаться в тени на многолюдных мероприятиях и редко заговариваю с кем-то первым.",
+      "text_en": "The first thing that I always do in a new place is to make friends."
+    },
+    {
+      "id": 29,
+      "factor": "E",
+      "facet": "Тревожность",
+      "reverse": true,
+      "text_ru": "Я редко испытываю нервозность или беспокойство даже перед лицом серьезных испытаний.",
+      "text_en": "I rarely feel anxious, even in situations where I know I have to perform well."
+    },
+    {
+      "id": 30,
+      "factor": "H",
+      "facet": "Скромность",
+      "reverse": true,
+      "text_ru": "Мне очень важно, чтобы окружающие знали о моем высоком статусе, достатке и авторитете.",
+      "text_en": "I would get a lot of pleasure from owning expensive luxury goods."
+    },
+    {
+      "id": 31,
+      "factor": "O",
+      "facet": "Любознательность",
+      "reverse": false,
+      "text_ru": "Я с искренним интересом читаю статьи и книги о научных открытиях, истории и законах природы.",
+      "text_en": "I find it boring to read about philosophical questions."
+    },
+    {
+      "id": 32,
+      "factor": "C",
+      "facet": "Прилежание",
+      "reverse": false,
+      "text_ru": "Взявшись за сложную задачу, я методично и упорно работаю до тех пор, пока не получу результат.",
+      "text_en": "I work hard to make sure I achieve whatever I set out to do."
+    },
+    {
+      "id": 33,
+      "factor": "A",
+      "facet": "Мягкость",
+      "reverse": false,
+      "text_ru": "Я всегда стараюсь выражать критику мягко и корректно, чтобы никого не задеть и не унизить.",
+      "text_en": "I tend to be lenient in judging other people."
+    },
+    {
+      "id": 34,
+      "factor": "X",
+      "facet": "Смелость в общении",
+      "reverse": false,
+      "text_ru": "В новой компании или рабочей группе я без труда беру инициативу в разговоре и чувствую себя раскованно.",
+      "text_en": "In social situations, I'm usually the one who makes the first move."
+    },
+    {
+      "id": 35,
+      "factor": "E",
+      "facet": "Страх",
+      "reverse": true,
+      "text_ru": "Даже в физически опасных ситуациях (экстрим, сильная гроза, риск аварии) я остаюсь совершенно невозмутимым.",
+      "text_en": "I don't mind taking big physical risks."
+    },
+    {
+      "id": 36,
+      "factor": "H",
+      "facet": "Справедливость",
+      "reverse": false,
+      "text_ru": "Я никогда не приму незаконное вознаграждение или взятку, даже если сумма будет астрономической.",
+      "text_en": "I'd be tempted to use counterfeit money, if I were sure I could get away with it."
+    },
+    {
+      "id": 37,
+      "factor": "O",
+      "facet": "Креативность",
+      "reverse": true,
+      "text_ru": "У меня практически нет интереса к творчеству, сочинительству или генерированию оригинальных концепций.",
+      "text_en": "I have never been much interested in poetry."
+    },
+    {
+      "id": 38,
+      "factor": "C",
+      "facet": "Перфекционизм",
+      "reverse": true,
+      "text_ru": "Я легко довольствуюсь результатом «и так сойдет», не стремясь выверять работу до идеала.",
+      "text_en": "I always try to be accurate in my work, even at the expense of time."
+    },
+    {
+      "id": 39,
+      "factor": "A",
+      "facet": "Гибкость",
+      "reverse": false,
+      "text_ru": "Я готов пойти на уступки и пересмотреть свое мнение, если это поможет сохранить гармонию и согласие.",
+      "text_en": "When people tell me that I'm wrong, my first reaction is to argue with them."
+    },
+    {
+      "id": 40,
+      "factor": "X",
+      "facet": "Социальная самооценка",
+      "reverse": true,
+      "text_ru": "Нередко меня посещает ощущение, что я менее успешен, популярен или привлекателен, чем другие.",
+      "text_en": "I think that most people like some aspects of my personality."
+    },
+    {
+      "id": 41,
+      "factor": "E",
+      "facet": "Зависимость от поддержки",
+      "reverse": false,
+      "text_ru": "В тяжелые жизненные моменты мне крайне важно присутствие близких людей, их сочувствие и теплые слова.",
+      "text_en": "Whenever I feel down, I like to be around people who can cheer me up."
+    },
+    {
+      "id": 42,
+      "factor": "H",
+      "facet": "Избегание жадности",
+      "reverse": true,
+      "text_ru": "Я бы с огромным удовольствием жил в роскошном особняке и демонстрировал богатство окружающим.",
+      "text_en": "I would want to be famous, even if it meant being talked about negatively."
+    },
+    {
+      "id": 43,
+      "factor": "O",
+      "facet": "Нетрадиционность",
+      "reverse": false,
+      "text_ru": "Мне искренне интересны необычные взгляды, альтернативные стили жизни и люди с нетривиальным мышлением.",
+      "text_en": "I enjoy listening to people who have unconventional viewpoints."
+    },
+    {
+      "id": 44,
+      "factor": "C",
+      "facet": "Осмотрительность",
+      "reverse": false,
+      "text_ru": "Перед принятием любого ответственного решения я методично взвешиваю все риски и возможные последствия.",
+      "text_en": "I don't do things that could be harmful to my health."
+    },
+    {
+      "id": 45,
+      "factor": "A",
+      "facet": "Терпение",
+      "reverse": false,
+      "text_ru": "Я исключительно редко выхожу из себя, даже когда окружающие проявляют глупость или медлительность.",
+      "text_en": "Most people lose their temper more quickly than I do."
+    },
+    {
+      "id": 46,
+      "factor": "X",
+      "facet": "Жизнерадостность",
+      "reverse": true,
+      "text_ru": "Редко бывает так, чтобы я испытывал бурную радость, восторг или безудержный энтузиазм.",
+      "text_en": "I seldom feel cheerful or full of energy."
+    },
+    {
+      "id": 47,
+      "factor": "E",
+      "facet": "Чувствительность",
+      "reverse": true,
+      "text_ru": "Меня трудно растрогать эмоциональной сценой в фильме или трогательной жизненной историей.",
+      "text_en": "I remain unaffected by sentimental movies or romantic stories."
+    },
+    {
+      "id": 48,
+      "factor": "H",
+      "facet": "Искренность",
+      "reverse": false,
+      "text_ru": "Мне крайне неприятно притворяться дружелюбным с человеком, если на самом деле он мне несимпатичен.",
+      "text_en": "If I want something from a person I dislike, I will act very nicely toward that person."
+    },
+    {
+      "id": 49,
+      "factor": "O",
+      "facet": "Эстетическая восприимчивость",
+      "reverse": false,
+      "text_ru": "Я способен испытывать глубокий эстетический восторг от красоты природы, музыки или произведений искусства.",
+      "text_en": "I see beauty in things that others might not notice."
+    },
+    {
+      "id": 50,
+      "factor": "C",
+      "facet": "Организованность",
+      "reverse": false,
+      "text_ru": "Мне нравится наводить порядок в своих вещах, структурировать информацию и соблюдать распорядок.",
+      "text_en": "I clean my office or home quite frequently."
+    },
+    {
+      "id": 51,
+      "factor": "A",
+      "facet": "Прощение",
+      "reverse": false,
+      "text_ru": "Я способен искренне простить человека, причинившего мне боль, если он осознал вину и раскаялся.",
+      "text_en": "If someone hurts me, I find it hard to ever trust them again."
+    },
+    {
+      "id": 52,
+      "factor": "X",
+      "facet": "Общительность",
+      "reverse": false,
+      "text_ru": "Мне по-настоящему нравится знакомиться с новыми людьми и постоянно расширять круг контактов.",
+      "text_en": "I enjoy having a lot of people around me."
+    },
+    {
+      "id": 53,
+      "factor": "E",
+      "facet": "Тревожность",
+      "reverse": false,
+      "text_ru": "Я часто ловлю себя на том, что сильно и долго переживаю из-за мелких неприятностей или неосторожных слов.",
+      "text_en": "I worry a lot about small setbacks or negative remarks."
+    },
+    {
+      "id": 54,
+      "factor": "H",
+      "facet": "Справедливость",
+      "reverse": true,
+      "text_ru": "Я считаю вполне допустимым обойти закон или правила, если они мешают мне получить желаемое.",
+      "text_en": "I would feel fine about taking credit for someone else's work if it helped my career."
+    },
+    {
+      "id": 55,
+      "factor": "O",
+      "facet": "Любознательность",
+      "reverse": false,
+      "text_ru": "Меня по-настоящему привлекают сложные интеллектуальные загадки, парадоксы и концептуальные споры.",
+      "text_en": "I enjoy solving complex puzzles and intellectual problems."
+    },
+    {
+      "id": 56,
+      "factor": "C",
+      "facet": "Осмотрительность",
+      "reverse": true,
+      "text_ru": "Я нередко принимаю поспешные решения под влиянием эмоций, о которых позже приходится сожалеть.",
+      "text_en": "I often do things without thinking about the consequences."
+    },
+    {
+      "id": 57,
+      "factor": "A",
+      "facet": "Гибкость",
+      "reverse": true,
+      "text_ru": "Если кто-то спорит со мной, я обычно упорно настаиваю на своей правоте, даже если аргументы оппонента сильны.",
+      "text_en": "When other people disagree with me, I quickly give in to avoid dispute."
+    },
+    {
+      "id": 58,
+      "factor": "X",
+      "facet": "Смелость в общении",
+      "reverse": false,
+      "text_ru": "Если возникает спорная ситуация, я уверенно и твердо отстаиваю свою точку зрения перед любой аудиторией.",
+      "text_en": "I find it easy to take charge in group projects and meetings."
+    },
+    {
+      "id": 59,
+      "factor": "E",
+      "facet": "Чувствительность",
+      "reverse": false,
+      "text_ru": "Я ощущаю сильную эмпатическую связь с людьми и глубоко принимаю близко к сердцу их эмоции.",
+      "text_en": "I feel deep emotional connection with people and their sorrows."
+    },
+    {
+      "id": 60,
+      "factor": "H",
+      "facet": "Скромность",
+      "reverse": false,
+      "text_ru": "Я считаю себя обычным человеком и совершенно не претендую на то, чтобы быть лучше или важнее других.",
+      "text_en": "I consider myself an ordinary person who is no better than others."
+    }
+  ]
+}

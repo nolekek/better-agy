@@ -1,0 +1,65 @@
+{
+  "plan": {
+    "title": "Notewise launch",
+    "summary": "A fictional 3-person team launches Notewise, an AI note-taking app for independent consultants, via founder-led LinkedIn content and live demos. Goal: 500 paying users in 12 months.",
+    "decision": "Commit a 6-month runway and a Q3 public launch on a LinkedIn-only acquisition bet.",
+    "horizon": "12 months post-launch"
+  },
+  "assumptions": [
+    {"id": "A1", "statement": "LinkedIn founder content will drive 60% of signups at a 3% visitor-to-trial rate.", "load_bearing": true},
+    {"id": "A2", "statement": "Consultants will pay $20/mo once they try the product for a week.", "load_bearing": true},
+    {"id": "A3", "statement": "The team can ship a reliable v1 by the Q3 date with current headcount.", "load_bearing": true},
+    {"id": "A4", "statement": "Incumbent note apps will not ship a comparable AI feature within the year.", "load_bearing": false}
+  ],
+  "failure_modes": [
+    {
+      "id": "F1",
+      "title": "LinkedIn channel under-delivers",
+      "story": "By month 5 the founder's posting cadence collapsed under launch crunch; reach fell 70% and the single-channel funnel produced a fraction of the planned trials.",
+      "breaks_assumption": "A1",
+      "likelihood": 4, "impact": 5,
+      "indicator": "Weekly trial signups from LinkedIn vs. plan",
+      "threshold": "Below 50% of the weekly trial target for 3 consecutive weeks",
+      "response": "Open a second channel (consultant communities / referral) and book a content backup author",
+      "mitigation": "Pre-build a 6-week content buffer and line up a second acquisition channel before launch, not after",
+      "owner": "Founder / growth"
+    },
+    {
+      "id": "F2",
+      "title": "Trials do not convert to paid",
+      "story": "Users liked the demo but week-1 activation was weak; without a clear in-product 'aha', trial-to-paid stalled at 4% and unit economics never closed.",
+      "breaks_assumption": "A2",
+      "likelihood": 3, "impact": 5,
+      "indicator": "Trial-to-paid conversion and week-1 activation rate",
+      "threshold": "Trial-to-paid below 8%, or week-1 activation below 30%, for two cohorts",
+      "response": "Pause paid acquisition, run 5 activation interviews, ship one onboarding fix per week",
+      "mitigation": "Define and instrument the activation event before launch; gate scale-up on hitting it",
+      "owner": "Product"
+    },
+    {
+      "id": "F3",
+      "title": "v1 slips past Q3",
+      "story": "Sync and reliability bugs pushed the launch two months; the content runway burned with no product to convert it, wasting the only acquisition window.",
+      "breaks_assumption": "A3",
+      "likelihood": 3, "impact": 4,
+      "indicator": "Burndown against the Q3 scope and open P0 bug count",
+      "threshold": "Scope burndown behind by >2 weeks at the T-6-week checkpoint",
+      "response": "Cut scope to the activation-critical path; delay non-essential features post-launch",
+      "mitigation": "Freeze a minimal launch scope tied to the activation event; everything else is post-launch",
+      "owner": "Engineering"
+    },
+    {
+      "id": "F4",
+      "title": "Incumbent ships comparable AI",
+      "story": "A large note app shipped a similar AI feature in month 8, compressing the differentiation window before Notewise had a retention moat.",
+      "breaks_assumption": "A4",
+      "likelihood": 2, "impact": 3,
+      "indicator": "Incumbent release notes and feature announcements",
+      "threshold": "Any incumbent ships a comparable AI note feature",
+      "response": "Lean into the consultant-specific workflow moat; accelerate the integrations roadmap",
+      "mitigation": "Build a narrow consultant-workflow wedge that a horizontal incumbent is unlikely to copy quickly",
+      "owner": "Founder / product"
+    }
+  ],
+  "residual_risk": "Even with mitigations, the plan still rests on a single founder's content output as the primary growth engine for the first two quarters. If the founder is unavailable for an extended period, no mitigation fully covers the gap; the team accepts this knowingly and revisits at the 6-month mark."
+}
