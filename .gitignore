@@ -3,5 +3,7 @@ target/
 .agents/
 **/*.rs.bk
 *.log
+*.tar.gz
+*.zip
 .DS_Store
 Thumbs.db

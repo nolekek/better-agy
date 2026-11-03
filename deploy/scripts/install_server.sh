@@ -205,8 +205,16 @@ EOF
 # Symlink global CLI binary
 ln -sf /opt/antigravity/bin/agy /usr/local/bin/agy 2>/dev/null || true
 
+# Copy and symlink add_developer utility if adjacent
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || echo "")"
+if [[ -n "$SCRIPT_DIR" && -f "$SCRIPT_DIR/add_developer.sh" ]]; then
+    cp "$SCRIPT_DIR/add_developer.sh" /opt/antigravity/bin/add_developer.sh
+    chmod 0755 /opt/antigravity/bin/add_developer.sh
+    ln -sf /opt/antigravity/bin/add_developer.sh /usr/local/bin/add_developer 2>/dev/null || true
+fi
+
 # Reload systemd
 systemctl daemon-reload
 
 echo "[+] install_server.sh completed successfully."
-echo "[+] Next steps: Run 'add_developer.sh <username>' to provision developers."
+echo "[+] Next steps: Run 'add_developer <username> [preset] [password]' to provision developers."

@@ -1,0 +1,53 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libpam0g-dev pkg-config libssl-dev dbus
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build Release Binaries
+        run: |
+          cargo build --release -p agy-cli -p agy-hub -p agy-proxy
+
+      - name: Package Release
+        run: |
+          TAG="${{ github.ref_name }}"
+          [ -z "$TAG" ] && TAG="v0.1.0"
+          PKG_NAME="better-agy-${TAG}-linux-x86_64"
+          mkdir -p "$PKG_NAME/bin"
+          cp target/release/agy "$PKG_NAME/bin/"
+          cp target/release/agy-hub "$PKG_NAME/bin/"
+          cp target/release/agy-proxy "$PKG_NAME/bin/"
+          cp -r deploy "$PKG_NAME/"
+          cp -r data "$PKG_NAME/"
+          cp install.sh "$PKG_NAME/"
+          cp README.md "$PKG_NAME/"
+          tar -czvf "${PKG_NAME}.tar.gz" "$PKG_NAME"
+          cp "${PKG_NAME}.tar.gz" better-agy-installer.tar.gz
+          echo "ASSET_NAME=${PKG_NAME}.tar.gz" >> $GITHUB_ENV
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ${{ env.ASSET_NAME }}
+            better-agy-installer.tar.gz
+            install.sh
