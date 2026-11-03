@@ -41,7 +41,8 @@ if [[ "$OS_FAMILY" == "debian" ]]; then
     apt-get update -qq
     apt-get install -y -qq \
         curl jq tar gzip libpam0g-dev build-essential \
-        pkg-config libssl-dev dbus debian-keyring debian-archive-keyring apt-transport-https
+        pkg-config libssl-dev dbus debian-keyring debian-archive-keyring apt-transport-https \
+        clang libclang-dev
 
     # Install official Caddy repo if not present
     if ! command -v caddy >/dev/null 2>&1; then
@@ -53,7 +54,7 @@ if [[ "$OS_FAMILY" == "debian" ]]; then
 elif [[ "$OS_FAMILY" == "rhel" ]]; then
     dnf install -y -q \
         curl jq tar gzip pam-devel gcc gcc-c++ \
-        pkgconfig openssl-devel dbus
+        pkgconfig openssl-devel dbus clang clang-devel
     if ! command -v caddy >/dev/null 2>&1; then
         dnf install -y -q 'dnf-command(copr)'
         dnf copr enable -y @caddy/caddy

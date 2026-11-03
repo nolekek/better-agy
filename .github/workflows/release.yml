@@ -18,7 +18,7 @@ jobs:
       - name: Install Linux dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq libpam0g-dev pkg-config libssl-dev dbus
+          sudo apt-get install -y -qq libpam0g-dev pkg-config libssl-dev dbus clang libclang-dev
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
